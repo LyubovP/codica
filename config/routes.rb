@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :admin_users
-  devise_for :doctors
-  devise_for :users
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "home#index"
+  devise_for :users
+	  root :to => "home#new"
+	devise_for :doctors
 end
