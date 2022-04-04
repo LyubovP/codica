@@ -6,10 +6,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-    get "/profile", to: "user_profiles#index"
     root :to => "home#index"
 	devise_for :doctors, controllers: {
 	  registrations: 'doctors/registrations',
     sessions: 'doctors/sessions'
   }
+  resources :users
+  resources :doctors
 end
