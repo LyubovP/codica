@@ -1,11 +1,13 @@
 class DoctorsController < ApplicationController
-	before_action :authenticate_doctor!, only:[:show]
+	before_action :authenticate_doctor!
 	before_action :authenticate_user!, only:[:index]
 	before_action :set_doctor, only:[:show]
 
-	def show; end
-
 	def index
+		@doctor = current_doctor 
+	end
+
+	def show
 		@doctors = Doctor.all
 	end
 
