@@ -13,7 +13,7 @@
         <% if user_signed_in? %>
           <li class="nav-item">
               <li class="nav-item">
-            <%= link_to "Connect with a doctor who will answer your question", "#", class: "nav-link active" %>
+            <%= link_to "Connect with a doctor who will answer your question", new_answer_path, class: "nav-link active" %>
           </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -21,7 +21,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <%= link_to "My account", user_path(current_user), class: "dropdown-item" %>
+                  <%= link_to "My account", users_path, class: "dropdown-item" %>
                 </li>
                 <li>
                   <hr class="dropdown-divider" />
@@ -41,7 +41,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <%= link_to "My account", doctor_path(current_doctor), class: "dropdown-item" %>
+                  <%= link_to "My account", doctors_path, class: "dropdown-item" %>
                 </li>
                 <li>
                   <%= link_to "Your question", "#", class: "dropdown-item" %>
