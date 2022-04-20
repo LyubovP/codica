@@ -3,7 +3,7 @@ class AnswersController < ApplicationController
   before_action :find_answer, only: [:edit, :update, :destroy]
   
   def show
-    @answer = current_user.answers.find(params[:id])
+    
   end
 
   def new
@@ -12,6 +12,8 @@ class AnswersController < ApplicationController
 
   def create
     @answer = current_user.answers.build(answer_params)
+    @answer.start_time = params[:answer][:start_time].to_datetime
+    @answer.end_time = (@answer.start_time).to_time
     if @answer.save
       debugger
       redirect_to root_path
@@ -43,7 +45,6 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    debugger
-    params.require(:answer).permit(:description)
+    params.require(:answer).permit(:description, :user_id, :start_time, :answer_date)
   end
 end

@@ -46,10 +46,13 @@ ActiveRecord::Schema.define(version: 2022_04_04_102333) do
     t.bigint "user_id"
     t.text "description"
     t.date "answer_date"
-    t.boolean "is_approve"
-    t.boolean "is_reject"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id", "user_id", "answer_date", "start_time", "end_time"], name: "appoinments_index_with_patient", unique: true
+    t.index ["doctor_id"], name: "index_answers_on_doctor_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -79,4 +82,6 @@ ActiveRecord::Schema.define(version: 2022_04_04_102333) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "doctors"
+  add_foreign_key "answers", "users"
 end
